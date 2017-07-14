@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Anton|Oswald|Passion+One");
+body {
+  margin: 0;
+  font-family: 'Oswald', sans-serif; }
+
+.therest {
+    display: flex;
+    padding: 10px;
+    border: 10px;
+    text-align: center;
+}
+
+.nav {
+  display: flex;
+  padding: 0 15px; }
+
+.nav h1 a{
+  color: black;
+  font-size: 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 5px;
+  border: 1px solid transparent;
+  transition: border 2s;
+}
+.nav h1 a:hover {
+  border: 1px solid black;
+  padding: 5px;
+  color: black;
+  font-size: 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 3px; } }
+
+h2 {
+  color: #5e5e5e;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 26px;
+  margin-bottom: 0px; }
+
+h3 {
+  color: #5e5e5e;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0px; }
+
+ul {
+  padding-top: 12px; }
+
+ul li {
+  display: inline;
+  padding: 15px; }
+
+ul a li {
+  color: black;
+  font-size: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 5px;
+  border: 1px solid transparent;
+  transition: border 2s; }
+}
+
+ul li a {
+  color: black;
+  font-size: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 5px;
+  border: 1px solid transparent;
+  transition: border 2s; }
+
+ul li a:hover {
+  border: 1px solid black;
+  padding: 5px;
+  color: black;
+  font-size: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 3px; }
+
+img {
+  border: 20px;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh; }
+
+.map {
+  background-color: #eee;
+  flex: 2; }
+
+.modules {
+  box-shadow: -15px 6px 34px -16px rgba(0, 0, 0, 0.75);
+  z-index: 1;
+  background-color: white;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center; }
+
+.selections {
+  padding: 20px;
+  width: 90%;
+  margin: 10px;
+  flex: 1; }
+
+.schedule {
+  padding: 20px;
+  width: 90%;
+  flex: 2; }
+
+hr {
+  width: 90%;
+  color: #ddd; }
+
+.form-control {
+  width: 250px; }
+
+.submit-btn {
+  margin: 10px;
+  color: white;
+  font-size: 16px;
+  border: none;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  background: #e8d5d5;
+  border-radius: 50%; }
+
+.submit-btn:hover {
+  color: #444; }

@@ -1,58 +1,98 @@
-'use strict';
+// 'use strict';
 
-const express = require('express');
-const router = express.Router();
-const models = require('./../db/models');
-const Students = models.Students
+// const express = require('express');
+// const router = express.Router();
+// const models = require('./../db/models');
+// const Students = models.Students
 
-router.get('/', function (req, res, next) {
-  Students.findAll()
-  .then(campus => res.json(campus))
-  .catch(next);
-});
-router.get('/:id', function (req, res, next) {
-  const studentId = req.params.id
-  Students.findAll({
-    where: {
-      id: studentId
-    }
-  })
-  .then(student => res.json(student))
-  .catch(next);
-})
-// router.param('albumId', function (req, res, next, id) {
-//   Album.scope('defaultScope', 'populated').findById(id)
-//   .then(function (album) {
-//     if (!album) {
-//       const err = Error('Album not found');
-//       err.status = 404;
-//       throw err
+// router.get('/', function (req, res, next) {
+//   Students.findAll()
+//   .then(campus => res.json(campus))
+//   .catch(next);
+// });
+// router.get('/:id', function (req, res, next) {
+//   const studentId = req.params.id
+//   Students.findAll({
+//     where: {
+//       id: studentId
 //     }
-//     req.album = album;
-//     next();
-//     return null; // silences bluebird warning about promises inside of next
 //   })
+//   .then(student => res.json(student))
+//   .catch(next);
+// })
+// router.post('/', function (req, res, next) {
+//   Students.create(req.body)
+//   .then(student => res.status(201).json(student))
 //   .catch(next);
 // });
 
-// router.get('/:albumId', function (req, res) {
-//   res.json(req.album);
+// router.put('/:id', function (req, res, next) {
+//   const studentId = req.params.id
+//   Students.update(req.body, {
+//     where: {
+//       id: studentId
+//     }
+//   })
+//   .then(campus => res.json(campus))
+//   .catch(next)
+// })
+// router.delete('/:id', function (req, res, next) {
+//   const studentId = req.params.id
+//   Students.destroy({
+//       where: {
+//           id: studentId
+//       }
+//   })
+//   .then(() => res.status(204).end())
+//   .catch(next)
 // });
 
-// router.get('/:albumId/image', function (req, res, next) {
-//   res.redirect(`/api/songs/${req.album.songs[0].id}/image`)
-// });
+const express = require('express');
+const router = new express.Router();
+const models = require('../db/models');
+const Students = models.Students;
+module.exports = router;
 
-// router.get('/:albumId/songs/', function (req, res) {
-//   res.json(req.album.songs);
-// });
+router.get('/', function (req, res, next) {
+  Students.findAll({ where: req.query })
+  .then(student => res.json(student))
+  .catch(next);
+});
 
-// router.get('/:albumId/songs/:songId', function (req, res) {
-//   const songToSend = req.album.songs.find(song => {
-//     return song.id === Number(req.params.songId);
-//   });
-//   if (!songToSend) return res.sendStatus(404);
-//   res.json(songToSend);
-// });
+router.post('/', function (req, res, next) {
+  Students.create({name: req.body.name.inputName, email: req.body.name.inputEmail})
+  .then(student => res.status(201).json(student))
+  .catch(next);
+});
 
+router.param('studentId', function (req, res, next, id) {
+  Students.findById(id)
+  .then(student => {
+    if (!student) {
+      const err = Error('Student not found');
+      err.status = 404;
+      throw err
+    }
+    req.student = student;
+    next();
+    return null; // silences bluebird warning about promises inside of next
+  })
+  .catch(next);
+});
+
+router.get('/:studentId', function (req, res) {
+  res.json(req.student);
+});
+
+router.put('/:studentId', function (req, res, next) {
+  req.student.update(req.body)
+  .then(campus => res.status(200).json(campus))
+  .catch(next);
+});
+
+router.delete('/:studentId', function (req, res, next) {
+  req.student.destroy()
+  .then(() => res.status(204).end())
+  .catch(next);
+})
 module.exports = router

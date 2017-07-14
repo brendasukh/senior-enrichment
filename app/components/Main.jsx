@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import  Sidebar  from './Sidebar'
+import Campuses from './Campuses'
+import Students from './Students'
+import SingleStudent from './SingleStudent'
+import SingleCampus from './SingleCampus'
+import Home from './Home'
 
-const Main = () => {
-
-  return (
-    <div>
-        <h4 className="menu-item">
-          <Link to="/students">STUDENTS</Link>
-          <Link to="/campuses">CAMPUSES</Link>
-        </h4>
-     </div>
-  );
+export default class Main extends Component {
+  render () {
+    return (
+      <Router>
+            <div>
+               <Switch>
+                 <Route exact path="/students" component={Students} />
+                 <Route exact path="/campuses" component={Campuses}/>
+                 <Route path="/students/:studentId" component={SingleStudent}/>
+                 <Route path="/campuses/:campusId" component={SingleCampus}/>
+                 <Route component={Home}/>
+              </Switch>
+          </div>
+      </Router>
+    )
+  }
 }
-
-export default Main
