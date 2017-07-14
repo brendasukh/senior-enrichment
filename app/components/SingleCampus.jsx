@@ -49,17 +49,38 @@ export default class SingleCampus extends Component {
     console.log(students)
 
     return (
-      <div className="campus">
-        <div>
-          <h3>{ campus.name }</h3>
-          <h3>{filteredStudents.map(student =>
-              <Link to={`/students/${student.id}`}> <li> {student.name}</li> </Link>
-            )}
-          </h3>
-          <img src={ campus.image } className='img-thumbnail'></img>
+            
+        <div className="outside-wrap">
+            <div className="nav">
+                <h1><Link to='/'>Iroh's School of Javascript</Link></h1>
+                <ul className="nav-links">
+                    <li><Link to="/students">STUDENTS</Link></li>
+                    <li><Link to="/campuses">CAMPUSES</Link></li>
+                </ul>
+            </div>
+            <h1>{campus.name}</h1>
+            <div className="container">
+                {(filteredStudents) && filteredStudents.map(student => 
+                  
+                  <div className="row">
+                          <div className="card">
+                            <div className= "col-xs-10">
+                            <img src={student.image} alt="Avatar" style={{width: 100 + '%'}}></img>
+                            <h4>
+                                <b><Link to={`/students/${student.id}`}>{student.name}</Link></b>
+          
+                            </h4> 
+                            </div>
+                          </div>
+                    </div>
+                        
+                )}
 
+            </div>
+                  
+                  )
+                    
         </div>
-      </div>
     )
   }
 }

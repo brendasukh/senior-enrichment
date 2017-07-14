@@ -13,15 +13,22 @@ export default class Main extends Component {
     return (
         <div className="outside-wrap">
             <div className="nav">
-                <h1><Link to='/'>Margaret Hamilton Interplanetary Academy of JavaScript</Link></h1>
+                <h1><Link to='/'>Iroh's School of Javascript</Link></h1>
                 <ul className="nav-links">
                     <li><Link to="/students">STUDENTS</Link></li>
                     <li><Link to="/campuses">CAMPUSES</Link></li>
                 </ul>
             </div>
-            <div className="therest">
-                <img src="https://static.tumblr.com/76690b46eb1382be6c096a0237a95df9/c3ac1wq/kkXnqkfsh/tumblr_static_tumblr_static_filename_640.jpg"></img>
-                <img src="https://68.media.tumblr.com/631156371c7e00c2fd750373cb4fdf92/tumblr_o02zh3pFAT1uycfyqo1_500.gif"></img>
+            <h1>Coming Soon</h1>
+                    <div className="container">
+                            <div className="row">
+                                <div className="card">
+                                    <div className= "col-xs-10">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/5/5f/Legend_of_Korra_concept_art.png" alt="Avatar" style={{width: 100 + '%'}}></img>
+                                    <h4><b>Korra</b></h4> 
+                            </div>
+                    </div>
+                </div>
             </div>
         </div>
 

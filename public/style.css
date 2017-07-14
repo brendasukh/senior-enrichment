@@ -1,22 +1,29 @@
 @import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Anton|Oswald|Passion+One");
 body {
   margin: 0;
-  font-family: 'Oswald', sans-serif; }
-
+  font-family: 'Oswald', sans-serif;
+  background-color: white;
+  
+  }
 .therest {
     display: flex;
     padding: 10px;
     border: 10px;
     text-align: center;
 }
-
 .nav {
   display: flex;
-  padding: 0 15px; }
+  padding: 0 15px;
+  position: fixed;
+  bottom : 0px;
+}
+h1{
+  font-size: 50px;
+}
 
 .nav h1 a{
-  color: black;
-  font-size: 30px;
+  color: #B16353;
+  font-size: 50px;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -28,7 +35,7 @@ body {
   border: 1px solid black;
   padding: 5px;
   color: black;
-  font-size: 30px;
+  font-size: 50px;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 3px; } }
@@ -51,22 +58,21 @@ ul {
 
 ul li {
   display: inline;
-  padding: 15px; }
-
-ul a li {
+  padding: 15px;
   color: black;
-  font-size: 20px;
+  font-size: 30px;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 3px;
   padding: 5px;
   border: 1px solid transparent;
-  transition: border 2s; }
-}
+  transition: border 2s;
+  
+  }
 
 ul li a {
   color: black;
-  font-size: 20px;
+  font-size: 30px;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -78,15 +84,10 @@ ul li a:hover {
   border: 1px solid black;
   padding: 5px;
   color: black;
-  font-size: 20px;
+  font-size: 30px;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 3px; }
-
-img {
-  border: 20px;
-  padding: 20px;
-}
 
 .container {
   display: flex;
@@ -138,3 +139,46 @@ hr {
 
 .submit-btn:hover {
   color: #444; }
+
+.card {
+    position: static;
+    display:flex;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    height: 400px;
+    width: 350px;
+    transition: 0.3s;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    border: 10px;
+    margin: 20px;
+    align-content: center;
+    text-align: center;
+    background-image: url('http://www.urbanwaxx.com/images/large_marble_background.jpg');
+    border-radius: 5px; 
+   
+}
+.card h4{
+    font-size: 30px;
+    text-align: center;
+    margin: 5px;
+}
+.card h4 b{
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+
+}
+
+.card h4 b:visited{
+    text-decoration: none;
+}
+
+.card img{
+    padding:5px;
+    border:5px;
+    width:400px;
+    height:300px;
+    border-radius: 5px;
+}

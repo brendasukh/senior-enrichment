@@ -60,7 +60,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-  Students.create({name: req.body.name.inputName, email: req.body.name.inputEmail})
+  Students.create({name: req.body.name.inputName, email: req.body.name.inputEmail, image: req.body.name.inputImage})
   .then(student => res.status(201).json(student))
   .catch(next);
 });

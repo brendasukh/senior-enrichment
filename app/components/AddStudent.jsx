@@ -8,22 +8,28 @@ export default class AddStudent extends Component {
     this.state = {
         inputEmail: '',
         inputName: '',
-        students: []
+        inputImage: '',
+        students: [],
+        campuses: []
       },
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handleImageChange = this.handleImageChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addStudent = this.addStudent.bind(this);
+
   }
 
   componentDidMount () {
       axios.get('/api/students')
       .then(res => res.data)
       .then(students => this.setState({students}))
+      axios.get('/api/campuses')
+      .then(res => res.data)
+      .then(campuses => this.setState({campuses}))
   }
 
   addStudent (name) {
-      console.log('add students clicked');
       axios.post('/api/students', {name})
       .then(res => res.data)
       .then(student => this.setState({ students: [...this.state.students, student]})
@@ -46,11 +52,20 @@ export default class AddStudent extends Component {
       });
   }
 
+  handleImageChange (evt) {
+    const value = evt.target.value;
+
+    this.setState({
+          inputImage: value
+      });
+  }
+
   handleSubmit (evt) {
     evt.preventDefault();
     const inputValue={
         inputEmail: this.state.inputEmail,
-        inputName: this.state.inputName
+        inputName: this.state.inputName,
+        inputImage: this.state.inputImage
     }
 
     const addStudent = this.addStudent;
@@ -59,6 +74,7 @@ export default class AddStudent extends Component {
     this.setState({
       inputName: '',
       inputEmail: '',
+      inputImage: ''
 
     });
   }
@@ -66,9 +82,13 @@ export default class AddStudent extends Component {
   render () {
     const inputName = this.state.inputName;
     const inputEmail = this.state.inputEmail;
+    const inputImage = this.state.inputImage;
     const handleSubmit = this.handleSubmit;
+    const campuses = this.state.campuses
     const handleNameChange = this.handleNameChange
     const handleEmailChange = this.handleEmailChange
+    const handleImageChange = this.handleImageChange
+    
 
     return (
       <div className="well" style={{marginTop: '20px'}}>
@@ -95,6 +115,30 @@ export default class AddStudent extends Component {
                   onChange={handleEmailChange}
                   value={inputEmail}
                 />
+              </div>
+            </div>
+            <div className="form-group">
+              <label className="col-xs-2 control-label">ImageUrl</label>
+              <div className="col-xs-10">
+                <input
+                  className="form-control"
+                  type="text"
+                  onChange={handleImageChange}
+                  value={inputImage}
+                />
+              </div>
+            </div>
+            <div className="form-group">
+              <label className="col-xs-2 control-label">Campus</label>
+              <div className="col-xs-10">
+                <select>
+                {
+                  campuses.map(campus =>
+                    <option value={campus.id}>{campus.name}</option>
+                  )
+                }
+                  
+                </select>
               </div>
             </div>
             <div className="form-group">

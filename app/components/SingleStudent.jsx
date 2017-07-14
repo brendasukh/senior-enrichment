@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ChangeStudent from './ChangeStudent'
+import {Link} from 'react-router-dom';
 
 export default class SingleStudent extends Component {
 
@@ -52,15 +53,40 @@ export default class SingleStudent extends Component {
     console.log(filteredCampus)
     
     return (
-      <div className="student">
-        <ChangeStudent/>
-        <div>
-          <h3>{ student.name }</h3>
-          <h3>{filteredCampus.map(campus => 
-            <li>{campus.name}</li>)}
-          </h3>
-        </div>
+      <div>
+            
+      <div className="outside-wrap">
+          <div className="nav">
+              <h1><Link to='/'>Iroh's School of Javascript</Link></h1>
+              <ul className="nav-links">
+                  <li><Link to="/students">STUDENTS</Link></li>
+                  <li><Link to="/campuses">CAMPUSES</Link></li>
+              </ul>
+          </div>
+          <h1>{student.name}</h1>
+          <div className="container">
+              {
+                  <div className="row">
+                        <div className="card">
+                          <div className= "col-xs-10">
+                          <img src={student.image} alt="Avatar" style={{width: 100 + '%'}}></img>
+                          <h4>
+                          {(filteredCampus) && filteredCampus.map(campus =>
+                            
+                              <b><Link to={`/campuses/${campus.id}`}>{campus.name}</Link></b>
+                              
+                            )}
+                          </h4>
+                          <h4><b>{student.email}</b></h4> 
+                              </div>
+                          </div>
+                  </div>
+                      
+              }
+
+          </div>
       </div>
+  </div>
     )
   }
 }
